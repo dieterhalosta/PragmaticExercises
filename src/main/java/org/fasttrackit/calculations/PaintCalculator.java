@@ -14,7 +14,7 @@ public class PaintCalculator {
 
         //Calculations
         int roomArea = ceilingLenght * ceilingidth;
-
+        //TODO: calculate the gallons needed.
         //System output
         System.out.println("You will need to purchase  gallons of paint to cover " + roomArea + " square feet.");
     }
