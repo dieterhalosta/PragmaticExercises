@@ -11,10 +11,13 @@ public class PizzaParty {
         int people = scanner.nextInt();
         System.out.println("How many pizzas do you have?");
         int pizza = scanner.nextInt();
+        System.out.println("How many slices has a pizza?");
+        int slices = scanner.nextInt();
 
         //Calculations
-        int piece = people / pizza;
-        int leftover = people % pizza;
+        int slicesTotal = slices * pizza;
+        int piece = slicesTotal / people;
+        int leftover = slicesTotal % people;
 
         //System output
         System.out.println(people + " people with " + pizza + " pizzas.");
