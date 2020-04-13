@@ -31,7 +31,7 @@ public class MultistateSalesTaxCalculator {
               double countyTaxCalcTotal = userAmount*countyTax;
               double totalAmount = countyTaxCalcTotal + userAmount;
               System.out.println("The tax is: " + countyTaxCalcTotal + "." + "\nThe total is: " + totalAmount + ".") ;
-          };
+          }
       } else if (userState.equals("Illinois")){
           double countyTax = 0.08;
           double countyTaxCalcTotal = userAmount*countyTax;
@@ -40,10 +40,5 @@ public class MultistateSalesTaxCalculator {
       } else {
           System.out.println("The total is: " + userAmount + ".");
       }
-
-
-
-
-
     }
 }
