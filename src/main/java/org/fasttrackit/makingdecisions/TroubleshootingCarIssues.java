@@ -14,7 +14,7 @@ public class TroubleshootingCarIssues {
             String newInput = scanner.nextLine();
             if (newInput.equals("Y")){
                 System.out.println("Clean terminals and try again.");
-            } else if (userInput.equals("N")) {
+            } else if (newInput.equals("N")) {
                 System.out.println("Replace cables and try again.");
             }
         } else if (userInput.equals("N")) {
