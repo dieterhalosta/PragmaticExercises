@@ -4,36 +4,49 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class PasswordStrengthIndicator {
-    static boolean passwordValidator(char[]passArr){
-        int strgLen = passArr.length;
+    private static int passwordValidator(String pass){
+        int passScore = 0;
 
-        if (strgLen <= 8) {
-            return false;
-        } else {
-            Arrays.sort(passArr);
-            for (char c : passArr) {
-                if (Character.isDigit(c)) {
-                    return false;
-                } else if (Character.isLetter(c)) {
-                    return false;
-                }
-            }
+        if (pass.length() < 8){
+            return 0;
+        } else if ( pass.length() >= 10 ) {
+            passScore +=2;
+        } else
+            passScore +=1;
+
+        if (pass.matches("(?=.*[0-9]).*")) {
+            passScore +=2;
         }
-        return true;
+
+        if (pass.matches("(?=.*[a-z]).*")) {
+            passScore +=2;
+        }
+
+        if (pass.matches("(?=.*[A-Z]).*")){
+            passScore +=2;
+        }
+
+        if (pass.matches("(?=.*[~!@#$%^&*()_-]).*")){
+            passScore +=2;
+        }
+
+        return passScore;
     }
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter your password to be validated.");
-        String userPassword = scanner.nextLine();
+        String[] passArr = {
+                "012345",
+                "abcdefgh",
+                "abc123xyz",
+                "1337h@xor!"
+        };
 
-        char[] passArr = userPassword.toCharArray();
 
-        if(passwordValidator(passArr)){
-            System.out.println("The password is strong.");
-        } else {
-            System.out.println("The password is not strong");
+        for(String pass : passArr){
+            System.out.println(pass + ": " + passwordValidator(pass));
         }
+
+
 
     }
 }
