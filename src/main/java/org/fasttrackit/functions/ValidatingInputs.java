@@ -6,54 +6,44 @@ import java.util.InputMismatchException;
 
 public class ValidatingInputs {
 
-    public static Boolean validateNames(String name){
-        if (name.isBlank()){
-            return false;
-        } else if(name.length()<=2){
-            return false;
-        }
-
-        return true;
+    public static Boolean validateNamesNotNull(String name){
+        return !name.isBlank();
     }
 
-    public static String validateZipCode (){
+    public static Boolean validateNamesLength(String name){
+        return name.length() > 2;
+    }
+
+    public static Boolean validatedZCode(){
         System.out.println("Enter the ZIP code:");
         try {
             int zipCode = ScannerUtils.nextIntAndMoveToNextLine();
 
         } catch (InputMismatchException e){
 
-            return "The ZIP code must be numeric.";
+            return false;
         }
 
-        return "There were no error found.";
+        return true;
     }
 
-
-
-    public static void validateEmployeeId (){
+    public static Boolean employeeID(){
         System.out.println("Enter an employee ID:");
         String employeeId = ScannerUtils.nextLine();
 
-        if(employeeId.contains("-")){
+        if(employeeId.isBlank()){
+            return false;
+        } else if (employeeId.contains("-")){
             String[] toWork = employeeId.split("-");
-            System.out.println(toWork[0]);
-            System.out.println(toWork[1]);
             String firstArr = toWork[0];
             String secondArr = toWork[1];
-
-            System.out.println(secondArr);
-
-            if(secondArr.matches("(?=.*[0-9]).*") && !secondArr.matches("(?=.*[a-zA-Z]).*") && secondArr.length()==4 && firstArr.matches("(?=.*[a-zA-Z]).*") && !firstArr.matches("(?=.*[0-9]).*") && firstArr.length()==2){
-                System.out.println("IT works");
-            } else {
-                System.out.println("NOpe");
-            }
-
+            return secondArr.matches("(?=.*[0-9]).*") && !secondArr.matches("(?=.*[a-zA-Z]).*") && secondArr.length() == 4 && firstArr.matches("(?=.*[a-zA-Z]).*") && !firstArr.matches("(?=.*[0-9]).*") && firstArr.length() == 2;
         } else {
             System.out.println(employeeId + " is not a valid ID.");
-            validateEmployeeId();
+            employeeID();
         }
+
+        return true;
     }
 
     public static void validateInput(){
@@ -63,33 +53,44 @@ public class ValidatingInputs {
         System.out.println("Enter the last name:");
         String lastName = ScannerUtils.nextLine();
 
-        if(validateNames(firstName)){
-            if (validateNames(lastName)){
+        if(validateNamesNotNull(firstName)){
+          if(validateNamesLength(firstName)){
+              if(validateNamesNotNull(lastName)){
+                  if(validateNamesLength(lastName)){
+                      if (validatedZCode()){
+                          if (employeeID()){
+                              System.out.println("There were not errors found.");
+                          } else {
+                              System.out.println("Employee id is not a valid ID." );
+                          }
 
-            }
+                      }else{
+                          System.out.println("The ZIP code must be numeric.");
+                          validateInput();
+                      }
+                  }else{
+                      System.out.println(lastName + " is not a valid first name. It is too short.");
+                      validateInput();
+                  }
+              }else{
+                  System.out.println("The last name must be filled in.");
+                  validateInput();
+              }
+          } else{
+              System.out.println(firstName + " is not a valid first name. It is too short.");
+              validateInput();
+          }
         } else {
-            System.out.println(firstName + " is not a valid first name. It is too short");
+            System.out.println("The first name must be filled in.");
+            validateInput();
         }
 
     }
 
     public static void main(String[] args) {
-//        System.out.println("Enter the first name:");
-//        String firstName = ScannerUtils.nextLine();
-//        System.out.println("Enter the last name:");
-//        String lastName = ScannerUtils.nextLine();
-//        System.out.println("Enter the ZIP code:");
-//        int zipCode = ScannerUtils.nextIntAndMoveToNextLine();
-//        System.out.println("Enter an employee ID:");
-//        String employeeId = ScannerUtils.nextLine();
 
-//        System.out.println(firstName + " " + lastName + " ");
+        validateInput();
 
-//        String result = validateNames(firstName);
-//        System.out.println(result);
-//        String zCode = validateZipCode();
-//        System.out.println(zCode);
-        validateEmployeeId();
 
     }
 }

@@ -1,0 +1,38 @@
+   public static void validateEmployeeId (){
+        System.out.println("Enter an employee ID:");
+        String employeeId = ScannerUtils.nextLine();
+
+        if(employeeId.contains("-")){
+            String[] toWork = employeeId.split("-");
+            System.out.println(toWork[0]);
+            System.out.println(toWork[1]);
+            String firstArr = toWork[0];
+            String secondArr = toWork[1];
+
+            System.out.println(secondArr);
+
+            if(secondArr.matches("(?=.*[0-9]).*") && !secondArr.matches("(?=.*[a-zA-Z]).*") && secondArr.length()==4 && firstArr.matches("(?=.*[a-zA-Z]).*") && !firstArr.matches("(?=.*[0-9]).*") && firstArr.length()==2){
+                System.out.println("IT works");
+            } else {
+                System.out.println("NOpe");
+            }
+
+        } else {
+            System.out.println(employeeId + " is not a valid ID.");
+            validateEmployeeId();
+        }
+    }
+
+
+        public static String validateZipCode (){
+            System.out.println("Enter the ZIP code:");
+            try {
+                int zipCode = ScannerUtils.nextIntAndMoveToNextLine();
+
+            } catch (InputMismatchException e){
+
+                return "The ZIP code must be numeric.";
+            }
+
+            return "There were no error found.";
+        }
