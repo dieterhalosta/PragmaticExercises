@@ -1,52 +1,29 @@
 package org.fasttrackit.functions;
 
-import java.util.Arrays;
-import java.util.Scanner;
+import org.fasttrackit.utils.ScannerUtils;
 
 public class PasswordStrengthIndicator {
-    private static int passwordValidator(String pass){
-        int passScore = 0;
 
-        if (pass.length() < 8){
-            return 0;
-        } else if ( pass.length() >= 10 ) {
-            passScore +=2;
-        } else
-            passScore +=1;
+    public static void checkPass (String pass){
 
-        if (pass.matches("(?=.*[0-9]).*")) {
-            passScore +=2;
+        if(pass.matches("(?=.*[0-9]).*") && pass.length()<8){
+            System.out.println("The password '" + pass + "' is a very weak password.");
+        } else if (pass.matches("(?=.*[a-zA-Z]).*") && pass.length()<8){
+            System.out.println("The password '" + pass + "' is a weak password.");
+        } else if (pass.matches("(?=.*[a-zA-Z]).*") && pass.matches("(?=.*[0-9]).*") && !pass.matches("(?=.*[~!@#$%^&*()_-]).*") && pass.length()>=8){
+            System.out.println("The password '" + pass + "' is a strong password.");
+        } else if (pass.matches("(?=.*[a-zA-Z]).*") && pass.matches("(?=.*[0-9]).*") && pass.matches("(?=.*[~!@#$%^&*()_-]).*") && pass.length()>=8){
+            System.out.println("The password '" + pass + "' is a very strong password.");
         }
 
-        if (pass.matches("(?=.*[a-z]).*")) {
-            passScore +=2;
-        }
-
-        if (pass.matches("(?=.*[A-Z]).*")){
-            passScore +=2;
-        }
-
-        if (pass.matches("(?=.*[~!@#$%^&*()_-]).*")){
-            passScore +=2;
-        }
-
-        return passScore;
     }
+
     public static void main(String[] args) {
 
-        String[] passArr = {
-                "012345",
-                "abcdefgh",
-                "abc123xyz",
-                "1337h@xor!"
-        };
+        System.out.println("Type in your password.");
+        String userPass = ScannerUtils.nextLine();
 
 
-        for(String pass : passArr){
-            System.out.println(pass + ": " + passwordValidator(pass));
-        }
-
-
-
+        checkPass(userPass);
     }
 }
