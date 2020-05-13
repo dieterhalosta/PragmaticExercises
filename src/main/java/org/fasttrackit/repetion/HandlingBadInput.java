@@ -2,8 +2,6 @@ package org.fasttrackit.repetion;
 
 import org.fasttrackit.utils.ScannerUtils;
 
-import java.util.InputMismatchException;
-
 
 public class HandlingBadInput {
 

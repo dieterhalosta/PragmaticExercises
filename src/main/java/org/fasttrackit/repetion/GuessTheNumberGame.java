@@ -13,11 +13,11 @@ public class GuessTheNumberGame {
         System.out.println("Pick a difficulty level (1, 2, or 3):");
         int lvl = ScannerUtils.nextIntAndMoveToNextLine();
         if (lvl == 1) {
-            playGameLvl1(10);
+            playGameLvl(10);
         } else if (lvl == 2) {
-            playGameLvl1(100);
+            playGameLvl(100);
         } else if (lvl == 3){
-            playGameLvl1(1000);
+            playGameLvl(1000);
         } else {
             System.out.println("You entered a non existing level. Please try again.");
             selectLevel();
@@ -25,7 +25,7 @@ public class GuessTheNumberGame {
     }
 
 
-    public static void playGameLvl1(int max){
+    public static void playGameLvl(int max){
 
         int min = 1;
         int randomNumber = (int)(Math.random() * (max - min +1) + min);
@@ -69,8 +69,6 @@ public class GuessTheNumberGame {
             playAgain();
         }
     }
-
-
 
     public static void main(String[] args) {
         letUsPlay();
