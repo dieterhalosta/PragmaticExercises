@@ -24,7 +24,6 @@ public class GuessTheNumberGame {
         }
     }
 
-
     public static void playGameLvl(int max){
 
         int min = 1;
