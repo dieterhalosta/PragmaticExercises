@@ -22,7 +22,7 @@ public class SortingRecords  {
         record2.put("first_name", "Tou");
         record2.put("last_name","Xiong");
         record2.put("position", "Software Engineer");
-        record2.put("separation_date", LocalDate.of(2016,10,05));
+        record2.put("separation_date", LocalDate.of(2016,10,5));
         records.add(record2);
 
         Map<String, Object> record3 = new HashMap<>();
