@@ -1,141 +1,64 @@
 package org.fasttrackit.dataStructures;
 
+import java.time.LocalDate;
 import java.util.*;
 
 
 public class SortingRecords  {
 
- public static class Employee implements Comparable<Employee> {
-     private int id;
-     private String firstName;
-     private String lastName;
-     private String position;
-     private String separationDate;
+     public static void main(String[] args) {
 
 
-     public int getId() {
-         return id;
-     }
+        List<Map<String, Object>> records = new ArrayList<>();
 
-     public void setId(int id) {
-         this.id = id;
-     }
+        Map<String, Object> record1 = new HashMap<>();
+        record1.put("first_name", "John");
+        record1.put("last_name","Johnson");
+        record1.put("position", "Manager");
+        record1.put("separation_date", LocalDate.of(2016,12,31));
+        records.add(record1);
 
-     public String getFirstName() {
-         return firstName;
-     }
+        Map<String, Object> record2 = new HashMap<>();
+        record2.put("first_name", "Tou");
+        record2.put("last_name","Xiong");
+        record2.put("position", "Software Engineer");
+        record2.put("separation_date", LocalDate.of(2016,10,05));
+        records.add(record2);
 
-     public void setFirstName(String firstName) {
-         this.firstName = firstName;
-     }
-
-     public String getLastName() {
-         return lastName;
-     }
-
-     public void setLastName(String lastName) {
-         this.lastName = lastName;
-     }
-
-
-     public String getPosition() {
-         return position;
-     }
-
-     public void setPosition(String position) {
-         this.position = position;
-     }
-
-     public String getSeparationDate() {
-         return separationDate;
-     }
-
-     public void setSeparationDate(String separationDate) {
-         this.separationDate = separationDate;
-     }
-
-     @Override
-     public int compareTo(Employee employee) {
-         return (int)(this.id - employee.getId());
-     }
-
-     @Override
-     public String toString() {
-         return "Employee{" +
-                 "id=" + id +
-                 ", firstName='" + firstName + '\'' +
-                 ", lastName='" + lastName + '\'' +
-                 ", position='" + position + '\'' +
-                 ", separationDate='" + separationDate + '\'' +
-                 '}';
-     }
- }
+        Map<String, Object> record3 = new HashMap<>();
+        record3.put("first_name", "Michaela");
+        record3.put("last_name","Michaelson");
+        record3.put("position", "District Manager");
+        record3.put("separation_date", LocalDate.of(2015,12,19));
+        records.add(record3);
 
 
-    public static void main(String[] args) {
-
-        Employee employee1 = new Employee();
-        employee1.setId(1);
-        employee1.setFirstName("John");
-        employee1.setLastName("Johnson");
-        employee1.setPosition("Manager");
-        employee1.setSeparationDate("2016-12-31");
-
-        Employee employee2 = new Employee();
-        employee2.setId(2);
-        employee2.setFirstName("Tou");
-        employee2.setLastName("Xiong");
-        employee2.setPosition("Software Engineer");
-        employee2.setSeparationDate("2016-10-05");
-
-        Employee employee3 = new Employee();
-        employee3.setId(3);
-        employee3.setFirstName("Michaela");
-        employee3.setLastName("Michaelson");
-        employee3.setPosition("District Manager");
-        employee3.setSeparationDate("2015-12-19");
-
-        Employee employee4 = new Employee();
-        employee4.setId(4);
-        employee4.setFirstName("Jake");
-        employee4.setLastName("George");
-        employee4.setPosition("Programmer");
-
-        Employee employee5 = new Employee();
-        employee5.setId(5);
-        employee5.setFirstName("Jacquelyn");
-        employee5.setLastName("Jackson");
-        employee5.setPosition("DBA");
+        Map<String, Object> record4 = new HashMap<>();
+        record4.put("first_name", "Jake");
+        record4.put("last_name","Jacobson");
+        record4.put("position", "Programmer");
+        records.add(record4);
 
 
-        Employee employee6 = new Employee();
-        employee6.setId(6);
-        employee6.setFirstName("Sally");
-        employee6.setLastName("Weber");
-        employee6.setPosition("Web Developer");
-        employee6.setSeparationDate("2015-12-18");
+        Map<String, Object> record5 = new HashMap<>();
+        record5.put("first_name", "Jacquelyn");
+        record5.put("last_name","Jackson");
+        record5.put("position", "DBA");
+        records.add(record5);
 
 
-        Map<String, Employee> map = new HashMap<>();
-
-        map.put("Employee 1", employee1);
-        map.put("Employee 2", employee2);
-        map.put("Employee 3", employee3);
-        map.put("Employee 4", employee4);
-        map.put("Employee 5", employee5);
-        map.put("Employee 6", employee6);
-
-        List<Map<String, Employee>> records = new ArrayList<>();
-        records.add(map);
-
+        Map<String, Object> record6 = new HashMap<>();
+        record6.put("first_name", "Sally");
+        record6.put("last_name","Weber");
+        record6.put("position", "Web Developer");
+        record6.put("separation_date", LocalDate.of(2015,12,18));
+        records.add(record6);
 
 
         records.sort(Comparator.comparing(map1 -> map1.get("last_name").toString()));
         System.out.println(records);
 
-
-
-
     }
 }
+
 
