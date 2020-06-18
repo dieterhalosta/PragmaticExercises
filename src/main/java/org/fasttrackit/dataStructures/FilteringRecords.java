@@ -1,111 +1,63 @@
 package org.fasttrackit.dataStructures;
 
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class FilteringRecords {
-    public static class Student  {
-        private String firstName;
-        private String lastName;
-        private String position;
-        private String separationDate;
-        private int id;
 
-        public Student(int id, String firstName, String lastName, String position) {
-            this.id = id;
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.position = position;
-        }
+    public static void main(String[] args) {
 
+        List<Map<String, Object>> records = new ArrayList<>();
 
-        public String getFirstName() {
-            return firstName;
-        }
+        Map<String, Object> record1 = new HashMap<>();
+        record1.put("first_name", "John");
+        record1.put("last_name","Johnson");
+        record1.put("position", "Manager");
+        record1.put("separation_date", LocalDate.of(2016,12,31));
+        records.add(record1);
 
-        public void setFirstName(String firstName) {
-            this.firstName = firstName;
-        }
+        Map<String, Object> record2 = new HashMap<>();
+        record2.put("first_name", "Tou");
+        record2.put("last_name","Xiong");
+        record2.put("position", "Software Engineer");
+        record2.put("separation_date", LocalDate.of(2016,10,5));
+        records.add(record2);
 
-        public String getLastName() {
-            return lastName;
-        }
-
-        public void setLastName(String lastName) {
-            this.lastName = lastName;
-        }
-
-        public String getPosition() {
-            return position;
-        }
-
-        public void setPosition(String position) {
-            this.position = position;
-        }
-
-        public String getSeparationDate() {
-            return separationDate;
-        }
-
-        public void setSeparationDate(String separationDate) {
-            this.separationDate = separationDate;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        /*Comparator for sorting the list by Student Name*/
-        public static Comparator<Student> StuNameComparator = new Comparator<Student>() {
-
-            public int compare(Student s1, Student s2) {
-                String StudentName1 = s1.getLastName().toUpperCase();
-                String StudentName2 = s2.getLastName().toUpperCase();
-
-                //ascending order
-                return StudentName1.compareTo(StudentName2);
-
-                //descending order
-                //return StudentName2.compareTo(StudentName1);
-            }};
+        Map<String, Object> record3 = new HashMap<>();
+        record3.put("first_name", "Michaela");
+        record3.put("last_name","Michaelson");
+        record3.put("position", "District Manager");
+        record3.put("separation_date", LocalDate.of(2015,12,19));
+        records.add(record3);
 
 
-        @Override
-        public String toString() {
-            return "[name=" + firstName + " " + lastName + ", position=" + position + "]";
-        }
-
-    }
-
-    public static void main(String args[]){
+        Map<String, Object> record4 = new HashMap<>();
+        record4.put("first_name", "Jake");
+        record4.put("last_name","Jacobson");
+        record4.put("position", "Programmer");
+        records.add(record4);
 
 
-        ArrayList<Student> arraylist = new ArrayList<Student>();
-        arraylist.add(new Student(1, "John", "Johnson", "Manager"));
-        arraylist.add(new Student(2, "Tou", "Xiong", "Software Engineer"));
-        arraylist.add(new Student(3, "Michaela", "Michaelson", "District Manager"));
-        arraylist.add(new Student(4, "Jake", "Jacobson", "Programmer"));
-        arraylist.add(new Student(5, "Jacquelyn", "Jackson", "DBA"));
-        arraylist.add(new Student(6, "Sally", "Weber", "Web Developer"));
+        Map<String, Object> record5 = new HashMap<>();
+        record5.put("first_name", "Jacquelyn");
+        record5.put("last_name","Jackson");
+        record5.put("position", "DBA");
+        records.add(record5);
 
-        /*Sorting based on Student Name*/
-        System.out.println("Student Name Sorting:");
-        Collections.sort(arraylist, Student.StuNameComparator);
 
-        for(Student str: arraylist){
-            System.out.println(str);
-        }
+        Map<String, Object> record6 = new HashMap<>();
+        record6.put("first_name", "Sally");
+        record6.put("last_name","Weber");
+        record6.put("position", "Web Developer");
+        record6.put("separation_date", LocalDate.of(2015,12,18));
+        records.add(record6);
 
-//        /* Sorting on Rollno property*/
-//        System.out.println("RollNum Sorting:");
-//        Collections.sort(arraylist, Student.StuRollno);
-//        for(Student str: arraylist){
-//            System.out.println(str);
-//        }
+
+        records.sort(Comparator.comparing(map1 -> map1.get("last_name").toString()));
+        System.out.println(records);
+
+
     }
 
 }
