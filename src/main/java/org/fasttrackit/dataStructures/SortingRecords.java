@@ -130,6 +130,11 @@ public class SortingRecords  {
 
 
 
+        records.sort(Comparator.comparing(map1 -> map1.get("last_name").toString()));
+        System.out.println(records);
+
+
+
 
     }
 }
