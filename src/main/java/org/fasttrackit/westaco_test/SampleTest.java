@@ -3,8 +3,6 @@ package org.fasttrackit.westaco_test;
 public class SampleTest {
     public static double average(int a, int b) {
         double sum = a +b;
-        double divi = sum /2;
-
         return sum / 2;
     }
 
