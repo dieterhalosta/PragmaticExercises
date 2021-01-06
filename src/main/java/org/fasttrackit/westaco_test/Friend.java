@@ -3,6 +3,17 @@ import java.util.Collection;
 import java.util.ArrayList;
 
 public class Friend {
+
+    /*
+    *   Given a data structure representing a social network, implement method canBeConnected on class Friend.
+    *
+    *   The method should check if a connection to the given member exists, efficiently with respect to time used. That should be
+    *   either a direct friendship or chain of members between them who are mutual friends.
+    *
+    *   For example, if A and B are friends and B and C are friends, then A.canBeConnected(C) should return true, since C is a friend
+    *   of B and B is a friend of A.
+    * */
+
     private Collection<Friend> friends;
     private String email;
 
