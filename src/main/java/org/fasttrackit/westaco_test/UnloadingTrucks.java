@@ -4,6 +4,15 @@ import java.text.SimpleDateFormat;
 
 public class UnloadingTrucks {
 
+    /*
+    *   Given a collection of truck unloading times, implement the canUnloadAll method which, efficiently with respect to time used,
+    * checks if they can be unloaded completely without having to unload two or more trucks at the same time.
+    *   For example, for the unloading times below, the method should return true because they don't overlap:
+    *  * 3/4/2019 19:00 - 20:30
+    *  * 3/4/2019 22:10 - 22:30
+    *  * 3/4/2019 20:30 - 22:00
+    * */
+
     public static Boolean canUnloadAll(Collection<UnloadingTime> unloadingTimes) {
         for(int n=0; n<unloadingTimes.size(); n++){
 ////            if (unloadingTimes.get[n].end != unloadingTimes.get[n + 1].start){
