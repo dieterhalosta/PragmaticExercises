@@ -25,17 +25,23 @@ public class Friend {
     }
 
     public boolean canBeConnected(Friend friend) {
-        //Verifica daca are friend are friends
-        //Parcurge lista de friends si vezi care are friends
-        //daca friends[0] are lista de friends si difera de friend atunci true
+        //Check if friend has friends
+        //Check if friends[0] has friends
+        //Check if friends[0].friends[0] is different from friend - if different return true, else move to next
 
-        if (friend.getFriends().isEmpty()){
+
+        if(friend.friends.isEmpty()){
             return false;
         } else {
-            friends.
+            for(int i=0; i< friends.size(); i++){
+                boolean contains = friends.contains(getFriends());
+                if (contains){
+
+                }
+            }
         }
 
-
+        return false;
     }
 
     public static void main(String[] args) {
